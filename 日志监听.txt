@@ -1,0 +1,10 @@
+        Process localProcess = Runtime.getRuntime().exec("logcat -b radio");
+        InputStream lips = localProcess.getInputStream();
+        InputStreamReader lisr = new InputStreamReader(lips);
+        BufferedReader lbfr = new BufferedReader(lisr);
+        String str = lbfr.readLine();
+ 
+ 然后判断 是否包含日志 正则匹配下 GET_CURRENT_CALLS.*ACTIVE
+ 
+后台开启一个服务 在开始一个线程。一直读取实现监听。。
+缺点是不是很灵敏。。貌似 qq通讯录应该也是这么干的。。有时候容易失效
